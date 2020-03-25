@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse use--motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -401,8 +401,7 @@
           <p>对于开发人员来说, 拥有自己的专属博客是必不可少的, 选用哪款技术来搭建博客对于日后编辑维护显得尤其重要. 今天要跟大家介绍的是基于hexo来搭建的博客，本人才疏学浅，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励.</p>
 <p>欢迎来到<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 这是一篇由构建–&gt;发布到github上的实践操作步骤. 查看<a href="https://hexo.io/docs/" target="_blank" rel="noopener">文档</a>了解更多信息. 如果你在使用hexo时遇到任何问题, 币可以在<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">故障排除中</a>找到答案，或者你可以在<a href="https://github.com/git-Where/hexo-bk/issues" target="_blank" rel="noopener">GitHub</a>上问我.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="建立新文件"><a href="#建立新文件" class="headerlink" title="建立新文件"></a>建立新文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"文件名称"</span></span><br></pre></td></tr></table></figure>
-<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">hexo_Docs</a></p>
-<h3 id="开启服务（热更新）"><a href="#开启服务（热更新）" class="headerlink" title="开启服务（热更新）"></a>开启服务（热更新）</h3>
+<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">hexo_Docs</a><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/11/15/hello-hexo/#more" rel="contents">
@@ -412,7 +411,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -548,9 +547,16 @@
 
       
         
-          
-            
-          
+          <p>  不管是刚从事前端的小白，还是从事有几年经验的前端大佬，对于浏览器兼容性问题要是一经时间的推移没去复习巩固，可能就会渐渐被淡忘在脑海深处；所以，利用闲暇片段时间对这块内容进行又一次的梳理，贴到博客上，希望能帮助到有需要的伙伴~~~本人才疏学浅，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励。</p>
+<hr>
+<h4 id="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"><a href="#浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同" class="headerlink" title="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"></a>浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同</h4><p>  问题根源：页面上随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。<br>  遇到几率：100%<br>  解决方案：<br>  可以使用Normalize来清除默认样式，具体可参考文章：<a href="https://jerryzou.com/posts/aboutNormalizeCss/" target="_blank" rel="noopener">让我们谈一谈Normalize.css</a><br>  也可以使用如下代码：<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">li</span>,<span class="selector-tag">input</span>,<span class="selector-tag">div</span>,<span class="selector-tag">span</span>,<span class="selector-tag">a</span>,<span class="selector-tag">form</span> …… &#123; <span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; &#125; OR *&#123;<span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/14/browser-solution/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -690,6 +696,7 @@
       
         
           <p>  闲暇之余，来跟大家侃侃微信小程序开发中的那些事；今天要说的是基于<a href="https://uniapp.dcloud.io/" target="_blank" rel="noopener">uniapp</a>这款完全使用vue写法开发的微信小程序，相信大家在开发当中或多或少都会遇到一些棘手的怪异问题，下面是自己在项目实战开发当中总结出来的一些事项，希望能帮到大家。本人才疏学浅，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励。</p>
+<hr>
 <h4 id="uni-app"><a href="#uni-app" class="headerlink" title="uni-app"></a>uni-app</h4><p>  <a href="https://uniapp.dcloud.io/" target="_blank" rel="noopener">uni-app官网文档</a></p>
 <h4 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h4><p>  <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html" target="_blank" rel="noopener">微信小程序官方文档</a></p>
 <h3 id="细节-Attention"><a href="#细节-Attention" class="headerlink" title="细节-Attention"></a>细节-Attention</h3>
