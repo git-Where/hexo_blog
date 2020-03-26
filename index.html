@@ -136,9 +136,8 @@
 
   
   
-    <script src="/js/src/clickDynamic/clicksocialvalue.js"></script>
+    <script type="text/javascript" src="/js/src/clickDynamic/clicklove.js"></script>
   
-  <script type="text/javascript" src="/js/src/jquery-2.2.4.min.js"></script>
 
 </head>
 
@@ -458,154 +457,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2019/10/14/browser-solution/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yeqs">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="葉先生个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/14/browser-solution/" itemprop="url">浏览器兼容性问题解决方案 · 总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T15:08:18+08:00">
-                2019-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端-跨浏览器兼容总结篇/" itemprop="url" rel="index">
-                    <span itemprop="name">前端-跨浏览器兼容总结篇</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  不管是刚从事前端的小白，还是从事有几年经验的前端大佬，对于浏览器兼容性问题要是一经时间的推移没去复习巩固，可能就会渐渐被淡忘在脑海深处；所以，利用闲暇片段时间对这块内容进行又一次的梳理，贴到博客上，希望能帮助到有需要的伙伴~~~本人才疏学浅，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励。</p>
-<hr>
-<h4 id="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"><a href="#浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同" class="headerlink" title="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"></a>浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同</h4><p>  问题根源：页面上随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。<br>  遇到几率：100%<br>  解决方案：<br>  可以使用Normalize来清除默认样式，具体可参考文章：<a href="https://jerryzou.com/posts/aboutNormalizeCss/" target="_blank" rel="noopener">让我们谈一谈Normalize.css</a><br>  也可以使用如下代码：<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">li</span>,<span class="selector-tag">input</span>,<span class="selector-tag">div</span>,<span class="selector-tag">span</span>,<span class="selector-tag">a</span>,<span class="selector-tag">form</span> …… &#123; <span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; &#125; OR *&#123;<span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/14/browser-solution/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2019/10/10/Small-program/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -706,6 +557,154 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/10/10/Small-program/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2018/10/14/browser-solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yeqs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="葉先生个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/14/browser-solution/" itemprop="url">浏览器兼容性问题解决方案 · 总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-14T15:08:18+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端-跨浏览器兼容总结篇/" itemprop="url" rel="index">
+                    <span itemprop="name">前端-跨浏览器兼容总结篇</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>  不管是刚从事前端的小白，还是从事有几年经验的前端大佬，对于浏览器兼容性问题要是一经时间的推移没去复习巩固，可能就会渐渐被淡忘在脑海深处；所以，利用闲暇片段时间对这块内容进行又一次的梳理，贴到博客上，希望能帮助到有需要的伙伴~~~本人才疏学浅，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励。</p>
+<hr>
+<h4 id="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"><a href="#浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同" class="headerlink" title="浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同"></a>浏览器兼容问题一：不同浏览器的标签默认的margin和padding不同</h4><p>  问题根源：页面上随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。<br>  遇到几率：100%<br>  解决方案：<br>  可以使用Normalize来清除默认样式，具体可参考文章：<a href="https://jerryzou.com/posts/aboutNormalizeCss/" target="_blank" rel="noopener">让我们谈一谈Normalize.css</a><br>  也可以使用如下代码：<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">li</span>,<span class="selector-tag">input</span>,<span class="selector-tag">div</span>,<span class="selector-tag">span</span>,<span class="selector-tag">a</span>,<span class="selector-tag">form</span> …… &#123; <span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; &#125; OR *&#123;<span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/14/browser-solution/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

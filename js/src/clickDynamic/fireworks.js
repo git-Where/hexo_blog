@@ -122,7 +122,7 @@ class CursorSpecialEffects {
     style.width = this.renderCanvas.width = this.computerCanvas.width = this.globalWidth
     style.height = this.renderCanvas.height = this.computerCanvas.height = this.globalHeight
 
-    document.getElementsByTagName("body")[0].append(this.renderCanvas)
+    document.body.append(this.renderCanvas)
 
     window.addEventListener('mousedown', this.handleMouseDown.bind(this))
     window.addEventListener('pagehide', this.handlePageHide.bind(this))
