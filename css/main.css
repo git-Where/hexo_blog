@@ -1872,7 +1872,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #00f711;
+  background: #ffffe8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2760,4 +2760,10 @@ embed {
 }
 .use-motion > * {
   opacity: 1;
+}
+.menu .menu-item a {
+  position: relative;
+}
+.menu .menu-item a:hover .menu-icon {
+  top: 10px;
 }
