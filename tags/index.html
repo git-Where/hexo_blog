@@ -622,6 +622,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
    <script type="text/javascript">
         var gitalk = new Gitalk({
           clientID: '00753205cc8ca458afd9',
@@ -629,7 +630,7 @@
           repo: 'hexo-gitalk',
           owner: 'git-Where',
           admin: ['git-Where'],
-          id: '1578552525000',
+          id: md5(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')
