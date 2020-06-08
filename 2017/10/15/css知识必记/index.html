@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use--motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog-logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="整理一些日常开发中常用到的css，以及在开发中遇到的奇葩问题解决方案（手机端、pc）">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css知识必记">
+<meta property="og:url" content="https://git-where.github.io/2017/10/15/css知识必记/index.html">
+<meta property="og:site_name" content="葉先生个人博客">
+<meta property="og:description" content="整理一些日常开发中常用到的css，以及在开发中遇到的奇葩问题解决方案（手机端、pc）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-08T02:46:38.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css知识必记">
+<meta name="twitter:description" content="整理一些日常开发中常用到的css，以及在开发中遇到的奇葩问题解决方案（手机端、pc）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://git-where.github.io/2017/10/15/css知识必记/">
+
+
+
+
+
+  <title>css知识必记 | 葉先生个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/js/src/clickDynamic/clicklove.js"></script>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <main id="main" class="main">
+        <div class="headband">
+          <div class="headband-inner">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="340" height="86" src="//music.163.com/outchain/player?type=2&id=26090155&auto=1&height=66"></iframe>
+          </div>
+        </div>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">葉先生个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> 
+            
+            <span>首页</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> 
+            
+            <span>关于</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> 
+            
+            <span>标签</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> 
+            
+            <span>分类</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> 
+            
+            <span>归档</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> 
+            
+            <span>日程表</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> 
+            
+            <span>站点地图</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> 
+            
+            <span>公益404</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+          </header>
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2017/10/15/css知识必记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yeqs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="葉先生个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css知识必记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T17:24:21+08:00">
+                2017-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>整理一些日常开发中常用到的css，以及在开发中遇到的奇葩问题解决方案（手机端、pc）</p>
+<hr>
+<a id="more"></a>
+<h2 id="文本超出显示省略号"><a href="#文本超出显示省略号" class="headerlink" title="文本超出显示省略号"></a>文本超出显示省略号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">white-space:nowrap;</span><br><span class="line">overflow:hidden;</span><br><span class="line">text-overflow:ellipsis;</span><br><span class="line">display:block;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>超出几行文本显示为省略号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">-webkit-line-clamp: 2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一般的文字截断（适用于内联与块）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">display: block;</span><br><span class="line">word-break: keep-all; /*不换行*/</span><br><span class="line">word-space: nowrap; /*不换行*/</span><br><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis; /*当对象内文本溢出时显示省略标记（...）,需与overflow:hidden;一起使用*/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于表格，定义有点不一样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">table&#123;</span><br><span class="line">    width:100%;</span><br><span class="line">    table-layout:fixed; /*还有定义了表格的布局算法为fixes,下面的td定义才能起作用*/</span><br><span class="line">&#125;</span><br><span class="line">td&#123;</span><br><span class="line">    width:100%;</span><br><span class="line">    word-break:keep-all; /*不换行*/</span><br><span class="line">    word-space: nowrap; /*不换行*/</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    text-overflow: ellipsis; /*当对象内文本溢出时显示省略标记（...）,需与overflow:hidden;一起使用*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>这个只对单行的文字有效，如果你想把它用在多行上，也只有第一行有作用的。这个写法只有ie会有“…”,其他的浏览器文本超出制定宽度时会隐藏。tabel里设置table-layout:fixed;td设置如上这样表格里设置宽度超出就可以以省略号标记。</p>
+</blockquote>
+<h2 id="单选框实现单选选中"><a href="#单选框实现单选选中" class="headerlink" title="单选框实现单选选中"></a>单选框实现单选选中</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=”radio” <span class="attribute">name</span>=<span class="string">"aihao"</span>&gt;要实现单选的话，要在每个input加同一个name</span><br></pre></td></tr></table></figure>
+<h2 id="text-align作用"><a href="#text-align作用" class="headerlink" title="text-align作用"></a>text-align作用</h2><blockquote>
+<p>text-align只对图片跟文字起作用，只对非块类元素起作用（span、em、i、）</p>
+</blockquote>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符*"></a>通配符*</h2><blockquote>
+<p>样式后面加*为通配符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.search *&#123;</span><br><span class="line">    /*表示<span class="comment">#search下的所有的子元素*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="解决移动端点击出现黑色闪背景"><a href="#解决移动端点击出现黑色闪背景" class="headerlink" title="解决移动端点击出现黑色闪背景"></a>解决移动端点击出现黑色闪背景</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-tap-highlight-color:transparent;</span><br></pre></td></tr></table></figure>
+<h2 id="解决输入框点击光标变大"><a href="#解决输入框点击光标变大" class="headerlink" title="解决输入框点击光标变大"></a>解决输入框点击光标变大</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">line-height:initial;</span><br></pre></td></tr></table></figure>
+<h2 id="解决苹果手机页面内容滑动卡顿"><a href="#解决苹果手机页面内容滑动卡顿" class="headerlink" title="解决苹果手机页面内容滑动卡顿"></a>解决苹果手机页面内容滑动卡顿</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling:touch;</span><br></pre></td></tr></table></figure>
+<h2 id="表格td加边框重复问题"><a href="#表格td加边框重复问题" class="headerlink" title="表格td加边框重复问题"></a>表格td加边框重复问题</h2><blockquote>
+<p>在表格tabel里加上<code>border-collapse:collapse;</code>,在td内设置border边框，td与td之间遇到的border边框会<code>相叠</code>在一起</p>
+</blockquote>
+<h2 id="容器定死高度滑动"><a href="#容器定死高度滑动" class="headerlink" title="容器定死高度滑动"></a>容器定死高度滑动</h2><blockquote>
+<p>一个容器内定死高度加上底下两句，超出的内容会以滚动条的方式滚动：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling:touch;</span><br><span class="line">overflow-y:scroll;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）"><a href="#滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）" class="headerlink" title="滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）"></a>滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);</span><br><span class="line">-webkit-filter: grayscale(100%);</span><br><span class="line">-moz-filter: grayscale(100%);</span><br><span class="line">-ms-filter: grayscale(100%);</span><br><span class="line">-o-filter: grayscale(100%);</span><br><span class="line">filter: grayscale(100%);</span><br><span class="line">filter: gray;</span><br></pre></td></tr></table></figure>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@keyframes name&#123;</span><br><span class="line">    animation:  name (名称,自定义)</span><br><span class="line">                1s(动画几秒完成)</span><br><span class="line">                ease(动画完成曲线，ease低速开始，变快，在变慢结束；ease-in低速开始；ease-out低速结束；ease-in-out低速开始跟结束；linear重头到尾速度都是一样.);</span><br><span class="line">                1s(进入动画前的延迟)</span><br><span class="line">                Normal(动画正常播放；alternate动画轮流方向播放, forwards动画停在最后一帧，infinite永久循环)</span><br><span class="line">    transition-timing-function:cubic-bezier();(贝塞尔曲线)自己设置运动轨迹相当于ease  ease-in  ease-in-out</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="停止冒泡事件与阻止默认行为"><a href="#停止冒泡事件与阻止默认行为" class="headerlink" title="停止冒泡事件与阻止默认行为"></a>停止冒泡事件与阻止默认行为</h2><blockquote>
+<p>停止冒泡时间：(停止事件冒泡可以阻止事件中其他对象的事件处理函数被执行):event.stopPropagation();或 者return false;<br>阻止默认行为：(单击超链接后会跳转、单击”提交”按钮后表单会提交)event.preventDefault();或者return false;</p>
+</blockquote>
+<h2 id="页面的最小宽度"><a href="#页面的最小宽度" class="headerlink" title="页面的最小宽度"></a>页面的最小宽度</h2><blockquote>
+<p>最小宽度<code>min-width</code>在ie下不被识别，可以把一个<div> 放到 <body> 标签下，然后为div指定一个类：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#container&#123; min-width: 600px; width:expression(document.body.clientWidth &lt; 600? "600px": "auto" );&#125;</span></span><br></pre></td></tr></table></figure></body></div></p>
+</blockquote>
+<h2 id="在ie10下输入框默认会有一个叉叉"><a href="#在ie10下输入框默认会有一个叉叉" class="headerlink" title="在ie10下输入框默认会有一个叉叉"></a>在ie10下输入框默认会有一个叉叉</h2><blockquote>
+<p>加上如下代码即可避免<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input::-ms-clear&#123; display:none;&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="日期格式在手机上的兼容（ios）"><a href="#日期格式在手机上的兼容（ios）" class="headerlink" title="日期格式在手机上的兼容（ios）"></a>日期格式在手机上的兼容（ios）</h2><blockquote>
+<p>苹果只认2018/09/12格式，要是存在2018-09-12需作转换；安卓两种格式都能正常读取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Time = <span class="string">'2018-09-12'</span></span><br><span class="line">Time.replace(/-/g,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/15/hello-hexo/" rel="next" title="Hello hexo--从构建到发布">
+                <i class="fa fa-chevron-left"></i> Hello hexo--从构建到发布
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/24/vue构建项目/" rel="prev" title="vue构建项目">
+                vue构建项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yeqs</p>
+              <p class="site-description motion-element" itemprop="description">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本超出显示省略号"><span class="nav-number">1.</span> <span class="nav-text">文本超出显示省略号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单选框实现单选选中"><span class="nav-number">2.</span> <span class="nav-text">单选框实现单选选中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text-align作用"><span class="nav-number">3.</span> <span class="nav-text">text-align作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">4.</span> <span class="nav-text">通配符*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决移动端点击出现黑色闪背景"><span class="nav-number">5.</span> <span class="nav-text">解决移动端点击出现黑色闪背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决输入框点击光标变大"><span class="nav-number">6.</span> <span class="nav-text">解决输入框点击光标变大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决苹果手机页面内容滑动卡顿"><span class="nav-number">7.</span> <span class="nav-text">解决苹果手机页面内容滑动卡顿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格td加边框重复问题"><span class="nav-number">8.</span> <span class="nav-text">表格td加边框重复问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器定死高度滑动"><span class="nav-number">9.</span> <span class="nav-text">容器定死高度滑动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）"><span class="nav-number">10.</span> <span class="nav-text">滤镜效果（安卓不支持，火狐、谷歌、360、ie8都能很好兼容）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">11.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止冒泡事件与阻止默认行为"><span class="nav-number">12.</span> <span class="nav-text">停止冒泡事件与阻止默认行为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面的最小宽度"><span class="nav-number">13.</span> <span class="nav-text">页面的最小宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在ie10下输入框默认会有一个叉叉"><span class="nav-number">14.</span> <span class="nav-text">在ie10下输入框默认会有一个叉叉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期格式在手机上的兼容（ios）"><span class="nav-number">15.</span> <span class="nav-text">日期格式在手机上的兼容（ios）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yeqs</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '00753205cc8ca458afd9',
+          clientSecret: '9393742627170e48de78a1a73f81e60f52e7a4c3',
+          repo: 'hexo-gitalk',
+          owner: 'git-Where',
+          admin: ['git-Where'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
