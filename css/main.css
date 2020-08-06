@@ -1872,7 +1872,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff2d;
+  background: #05ff75;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2766,4 +2766,7 @@ embed {
 }
 .menu .menu-item a:hover .menu-icon {
   top: 10px;
+}
+#gitalk-container {
+  margin-left: 240px;
 }

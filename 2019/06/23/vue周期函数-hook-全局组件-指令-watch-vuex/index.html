@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="葉先生个人博客">
 <meta property="og:description" content="每天上班写着重复的代码，当一个码仔，忙到八九点，工作效率低，感觉自己没有任何提升。如何能更快的完成手头的工作，提高自己的开发效率，今天小编又整理了一些新的Vue使用技巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-23T11:39:04.172Z">
+<meta property="og:updated_time" content="2020-08-06T08:30:38.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue周期函数(hook,全局组件,指令,watch,vuex)">
 <meta name="twitter:description" content="每天上班写着重复的代码，当一个码仔，忙到八九点，工作效率低，感觉自己没有任何提升。如何能更快的完成手头的工作，提高自己的开发效率，今天小编又整理了一些新的Vue使用技巧。">
@@ -203,17 +203,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> 
-            
-            <span>关于</span>
-            <i class="menu-icon"></i>
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -247,34 +236,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> 
             
-            <span>日程表</span>
-            <i class="menu-icon"></i>
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> 
-            
-            <span>站点地图</span>
-            <i class="menu-icon"></i>
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> 
-            
-            <span>公益404</span>
+            <span>关于</span>
             <i class="menu-icon"></i>
           </a>
         </li>
@@ -455,8 +422,7 @@
 <p>一个表单页面，需求希望用户在修改表单的任意一项之后，表单页面就需要变更为被修改状态。如果按照上例中<code>watch</code>的写法，那么我们就需要去监听表单每一个属性，太麻烦了，这时候就需要用到<code>watch</code>的深度监听<code>deep</code></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      formData: &#123;</span><br><span class="line">        name: <span class="string">''</span>,</span><br><span class="line">        sex: <span class="string">''</span>,</span><br><span class="line">        age: 0,</span><br><span class="line">        deptId: <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    // 在值发生变化之后，重新加载数据</span><br><span class="line">    formData: &#123;</span><br><span class="line">      // 需要注意，因为对象引用的原因， newValue和oldValue的值一直相等</span><br><span class="line">      handler(newValue, oldValue) &#123;</span><br><span class="line">        // 在这里标记页面编辑状态</span><br><span class="line">      &#125;,</span><br><span class="line">      // 通过指定deep属性为<span class="literal">true</span>, watch会监听对象里面每一个值的变化</span><br><span class="line">      deep: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="函数式组件，函数是组件？"><a href="#函数式组件，函数是组件？" class="headerlink" title="函数式组件，函数是组件？"></a>函数式组件，函数是组件？</h2><div class="note info"><p>什么是函数式组件？函数式组件就是函数是组件，感觉在玩文字游戏。使用过React的同学，应该不会对函数式组件感到陌生。函数式组件，我们可以理解为没有内部状态，没有生命周期钩子函数，没有this(不需要实例化的组件)。</p>
-<p>在日常写bug的过程中，经常会开发一些纯展示性的业务组件，比如一些详情页面，列表界面等，它们有一个共同的特点是只需要将外部传入的数据进行展现，不需要有内部状态，不需要在生命周期钩子函数里面做处理，这时候你就可以考虑使用函数式组件。</p></div>
+<h2 id="函数式组件，函数是组件？"><a href="#函数式组件，函数是组件？" class="headerlink" title="函数式组件，函数是组件？"></a>函数式组件，函数是组件？</h2><div class="note info"><p>什么是函数式组件？函数式组件就是函数是组件，感觉在玩文字游戏。使用过React的同学，应该不会对函数式组件感到陌生。函数式组件，我们可以理解为没有内部状态，没有生命周期钩子函数，没有this(不需要实例化的组件)。<br>在日常写bug的过程中，经常会开发一些纯展示性的业务组件，比如一些详情页面，列表界面等，它们有一个共同的特点是只需要将外部传入的数据进行展现，不需要有内部状态，不需要在生命周期钩子函数里面做处理，这时候你就可以考虑使用函数式组件。</p></div>
 <h3 id="先来一个函数式组件的代码"><a href="#先来一个函数式组件的代码" class="headerlink" title="先来一个函数式组件的代码"></a>先来一个函数式组件的代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  // 通过配置functional属性指定组件为函数式组件</span><br><span class="line">  functional: <span class="literal">true</span>,</span><br><span class="line">  // 组件接收的外部属性</span><br><span class="line">  props: &#123;</span><br><span class="line">    avatar: &#123;</span><br><span class="line">      <span class="built_in">type</span>: String</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 渲染函数</span><br><span class="line">   * @param &#123;*&#125; h</span><br><span class="line">   * @param &#123;*&#125; context 函数式组件没有this, props, slots等都在context上面挂着</span><br><span class="line">   */</span><br><span class="line">  render(h, context) &#123;</span><br><span class="line">    const &#123; props &#125; = context</span><br><span class="line">    <span class="keyword">if</span> (props.avatar) &#123;</span><br><span class="line">      <span class="built_in">return</span> &lt;img src=&#123;props.avatar&#125;&gt;&lt;/img&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> &lt;img src=<span class="string">"default-avatar.png"</span>&gt;&lt;/img&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在上例中，我们定义了一个头像组件，如果外部传入头像，则显示传入的头像，否则显示默认头像。上面的代码中大家看到有一个render函数，这个是<code>Vue</code>使用<code>JSX</code>的写法，关于<code>JSX</code>,小编将在后续文章中会出详细的使用教程。</p>
@@ -606,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -616,10 +582,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">9</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -628,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

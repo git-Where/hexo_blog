@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use--motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog-logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript 优雅写法">
+<meta property="og:url" content="https://git-where.github.io/2018/02/06/Javascript-优雅写法/index.html">
+<meta property="og:site_name" content="葉先生个人博客">
+<meta property="og:description" content="当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-08-06T09:18:00.488Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript 优雅写法">
+<meta name="twitter:description" content="当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://git-where.github.io/2018/02/06/Javascript-优雅写法/">
+
+
+
+
+
+  <title>Javascript 优雅写法 | 葉先生个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/js/src/clickDynamic/clicklove.js"></script>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <main id="main" class="main">
+        <div class="headband">
+          <div class="headband-inner">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="340" height="86" src="//music.163.com/outchain/player?type=2&id=26090155&auto=1&height=66"></iframe>
+          </div>
+        </div>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">葉先生个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> 
+            
+            <span>首页</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> 
+            
+            <span>标签</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> 
+            
+            <span>分类</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> 
+            
+            <span>归档</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> 
+            
+            <span>关于</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+          </header>
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2018/02/06/Javascript-优雅写法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yeqs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="葉先生个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript 优雅写法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T16:37:09+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript写法/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript写法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h3 id="一-判断为空"><a href="#一-判断为空" class="headerlink" title="一.判断为空"></a>一.判断为空</h3><h4 id="直白写法"><a href="#直白写法" class="headerlink" title="直白写法"></a>直白写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == <span class="literal">undefined</span>) a = [];</span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span>(params.success)&#123;</span><br><span class="line">    params.success(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="优雅写法"><a href="#优雅写法" class="headerlink" title="优雅写法"></a>优雅写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = a || [];</span><br><span class="line">    </span><br><span class="line">params.success&amp;&amp;params.success(res);</span><br><span class="line"><span class="comment">//注意事项</span></span><br><span class="line"><span class="number">1</span>、<span class="keyword">if</span>内不能出现<span class="keyword">var</span>、=等赋值定义语句，才可以使用优雅写法</span><br><span class="line"><span class="number">2</span>、<span class="keyword">if</span>内可以有多个方法调用，但必须方法内有<span class="literal">true</span>返回值（此用法意义不大）</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问题：我们编写js代码时经常遇到复杂逻辑判断的情况，通常大家可以用if/else或者switch来实现多个条件判断，但这样会有个问题，随着逻辑复杂度的增加，代码中的if/else/switch会变得越来越臃肿，越来越看不懂.</p>
+</blockquote>
+<h3 id="二、多条件判断"><a href="#二、多条件判断" class="headerlink" title="二、多条件判断"></a>二、多条件判断</h3><h4 id="小白写法"><a href="#小白写法" class="headerlink" title="小白写法"></a>小白写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Statistics = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'执行'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> (currentTab) </span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">    Statistics();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    Statistics();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    Statistics();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    Statistics();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="优雅写法-1"><a href="#优雅写法-1" class="headerlink" title="优雅写法"></a>优雅写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将判断条件作为对象的属性名，将处理逻辑作为对象的属性值</span></span><br><span class="line"><span class="keyword">var</span> Statistics = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'执行'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> comparativeTotles = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">  [<span class="number">0</span>,Statistics],</span><br><span class="line">  [<span class="number">1</span>,Statistics],</span><br><span class="line">  [<span class="number">2</span>,Statistics],</span><br><span class="line">  [<span class="number">3</span>,Statistics]</span><br><span class="line">])</span><br><span class="line"><span class="keyword">let</span> map = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> comparativeTotles.get(val)</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">let</span> getMap  = map(<span class="number">1</span>); <span class="comment">//如果查找不到返回undefined</span></span><br><span class="line"><span class="keyword">if</span>(!getMap)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'查找不到'</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  concaozuole.log(<span class="string">'执行操作'</span>)</span><br><span class="line">  getMap()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="繁杂的if-else"><a href="#繁杂的if-else" class="headerlink" title="繁杂的if else"></a>繁杂的if else</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 按钮点击事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>status 活动状态：1开票中 2开票失败 3 开票成功 4 商品售罄 5 有库存未开团</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>identity 身份标识：guest客态 master主态</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> onButtonClick = <span class="function">(<span class="params">status, identity</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (identity == <span class="string">'guest'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (status == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">3</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">4</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (identity == <span class="string">'master'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (status == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">3</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">4</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//函数处理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="修改完后"><a href="#修改完后" class="headerlink" title="修改完后"></a>修改完后</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用数组循环的特性，符合条件的逻辑都会被执行，那就可以同时执行公共逻辑和单独逻辑。</span></span><br><span class="line"><span class="keyword">const</span> functionA = <span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="comment">/*do sth*/</span>&#125;       <span class="comment">// 单独业务逻辑</span></span><br><span class="line"><span class="keyword">const</span> functionB = <span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="comment">/*do sth*/</span>&#125;       <span class="comment">// 单独业务逻辑</span></span><br><span class="line"><span class="keyword">const</span> functionC = <span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="comment">/*send log*/</span>&#125;   <span class="comment">// 公共业务逻辑</span></span><br><span class="line"><span class="keyword">const</span> actions = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">    [<span class="string">'guest_1'</span>, () =&gt; &#123; functionA &#125;],</span><br><span class="line">    [<span class="string">'guest_2'</span>, () =&gt; &#123;  functionB &#125;],</span><br><span class="line">    [<span class="string">'guest_3'</span>, () =&gt; &#123; functionC &#125;],</span><br><span class="line">    [<span class="string">'guest_4'</span>, () =&gt; &#123; functionA &#125;],</span><br><span class="line">    [<span class="string">'default'</span>, () =&gt; &#123; functionC  &#125;],</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">])</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 按钮点击事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>identity 身份标识：guest客态 master主态</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>status 活动状态：1开票中 2开票失败 3 开票成功 4 商品售罄 5 有库存未开团</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> onButtonClick = <span class="function">(<span class="params">identity, status</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> action = actions.get(<span class="string">`<span class="subst">$&#123;identity&#125;</span>_<span class="subst">$&#123;status&#125;</span>`</span>) || actions.get(<span class="string">'default'</span>)</span><br><span class="line">  action.call(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-骚操作"><a href="#三-骚操作" class="headerlink" title="三.骚操作"></a>三.骚操作</h3><h4 id="1-生成随机ID"><a href="#1-生成随机ID" class="headerlink" title="1. 生成随机ID"></a>1. 生成随机ID</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成长度为10的随机字母数字字符串</span></span><br><span class="line"><span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substring(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-每秒更新当前时间"><a href="#2-每秒更新当前时间" class="headerlink" title="2. 每秒更新当前时间"></a>2. 每秒更新当前时间</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="function"><span class="params">()</span>=&gt;</span><span class="built_in">document</span>.body.innerHTML=<span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString().slice(<span class="number">10</span>,<span class="number">18</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="3-生成随机-16-进制-颜色-码-如-ffffff"><a href="#3-生成随机-16-进制-颜色-码-如-ffffff" class="headerlink" title="3. 生成随机 16 进制 颜色 码 如 # ffffff"></a>3. 生成随机 16 进制 颜色 码 如 # ffffff</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'#'</span> + <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">0xffffff</span>).toString(<span class="number">16</span>).padEnd(<span class="number">6</span>, <span class="string">'0'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4-返回键盘"><a href="#4-返回键盘" class="headerlink" title="4. 返回键盘"></a>4. 返回键盘</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用字符串返回一个键盘图形</span></span><br><span class="line">(<span class="function"><span class="params">_</span>=&gt;</span>[...<span class="string">"`1234567890-=~~QWERTYUIOP[]\~ASDFGHJKL;'~~ZXCVBNM,./~"</span>].map(<span class="function"><span class="params">x</span>=&gt;</span>(o+=<span class="string">`/<span class="subst">$&#123;b=<span class="string">'_'</span>.repeat(w=x&lt;y?<span class="number">2</span>:<span class="string">' 667699'</span>[x=[<span class="string">"BS"</span>,<span class="string">"TAB"</span>,<span class="string">"CAPS"</span>,<span class="string">"ENTER"</span>][p++]||<span class="string">'SHIFT'</span>,p])&#125;</span>\|`</span>,m+=y+(x+<span class="string">'    '</span>).slice(<span class="number">0</span>,w)+y+y,n+=y+b+y+y,l+=<span class="string">' __'</span>+b)[<span class="number">73</span>]&amp;&amp;(k.push(l,m,n,o),l=<span class="string">''</span>,m=n=o=y),m=n=o=y=<span class="string">'|'</span>,p=l=k=[])&amp;&amp;k.join<span class="string">`</span></span><br><span class="line"><span class="string">`</span>)()</span><br></pre></td></tr></table></figure>
+<h4 id="5-优雅的取整"><a href="#5-优雅的取整" class="headerlink" title="5. 优雅的取整"></a>5. 优雅的取整</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = ~~<span class="number">2.33</span>   ----&gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2.33</span> | <span class="number">0</span>   ----&gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">2.33</span> &gt;&gt; <span class="number">0</span>   ----&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-优雅的金钱格式化"><a href="#6-优雅的金钱格式化" class="headerlink" title="6.优雅的金钱格式化"></a>6.优雅的金钱格式化</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、使用正则实现</span><br><span class="line"><span class="keyword">var</span> test1 = <span class="string">'1234567890'</span></span><br><span class="line"><span class="keyword">var</span> format = test1.replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">','</span>)</span><br><span class="line"><span class="built_in">console</span>.log(format) <span class="comment">// 1,234,567,890</span></span><br><span class="line"><span class="number">2</span>、使用骚操作</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatCash</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().reduce(<span class="function">(<span class="params">prev, next, index</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> ((index % <span class="number">3</span>) ? next : (next + <span class="string">','</span>)) + prev</span><br><span class="line">       &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(format) <span class="comment">// 1,234,567,890</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-五种方法实现值交换"><a href="#7-五种方法实现值交换" class="headerlink" title="7. 五种方法实现值交换"></a>7. 五种方法实现值交换</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="keyword">var</span> temp = a; a = b; b = temp; (传统，但需要借助临时变量)</span><br><span class="line"> </span><br><span class="line"><span class="number">2.</span> a ^= b; b ^= a; a ^= b; (需要两个整数)</span><br><span class="line"> </span><br><span class="line"><span class="number">3.</span> b = [a, a = b][<span class="number">0</span>] (借助数组)</span><br><span class="line"> </span><br><span class="line"><span class="number">4.</span> [a, b] = [b, a]; (ES6，解构赋值)</span><br><span class="line"> </span><br><span class="line"><span class="number">5.</span> a = a + b; b = a - b; a = a - b; (小学奥赛题)</span><br></pre></td></tr></table></figure>
+<h4 id="8-实现深拷贝"><a href="#8-实现深拷贝" class="headerlink" title="8. 实现深拷贝"></a>8. 实现深拷贝</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.string(a))</span><br></pre></td></tr></table></figure>
+<h4 id="9-去掉小数部分"><a href="#9-去掉小数部分" class="headerlink" title="9. 去掉小数部分"></a>9. 去掉小数部分</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面几种方式都行</span></span><br><span class="line"><span class="built_in">parseInt</span>(num)</span><br><span class="line"> </span><br><span class="line">~~num</span><br><span class="line"> </span><br><span class="line">num &gt;&gt; <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">num | <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="10-递归求阶乘"><a href="#10-递归求阶乘" class="headerlink" title="10. 递归求阶乘"></a>10. 递归求阶乘</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">return</span> (n &gt; <span class="number">1</span>) ? n * f(n - <span class="number">1</span>) : n</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="11-打印试试"><a href="#11-打印试试" class="headerlink" title="11. 打印试试"></a>11. 打印试试</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(([][[]] + [])[+!![]] + ([] + &#123;&#125;)[!+[] + !![]])</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log((!(~+[]) + &#123;&#125;)[--[~+<span class="string">''</span>][+[]] * [~+[]] + ~~!+[]] + (&#123;&#125; + [])[[~!+[]] * ~+[]])</span><br></pre></td></tr></table></figure>
+<h4 id="12-console美化"><a href="#12-console美化" class="headerlink" title="12. console美化"></a>12. console美化</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.info(<span class="string">"%c哈哈"</span>, <span class="string">"color: #3190e8; font-size: 30px; font-family: sans-serif"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<p>以上都是自己个人的总结，表达能力有限，书写过程如有错误欢迎指正，也请点赞评论鼓励.</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/26/4-域名映射部署/" rel="next" title="站点域名映射部署-coding-github">
+                <i class="fa fa-chevron-left"></i> 站点域名映射部署-coding-github
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/24/vue构建项目/" rel="prev" title="vue构建项目">
+                vue构建项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yeqs</p>
+              <p class="site-description motion-element" itemprop="description">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-判断为空"><span class="nav-number">1.</span> <span class="nav-text">一.判断为空</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直白写法"><span class="nav-number">1.1.</span> <span class="nav-text">直白写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优雅写法"><span class="nav-number">1.2.</span> <span class="nav-text">优雅写法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、多条件判断"><span class="nav-number">2.</span> <span class="nav-text">二、多条件判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小白写法"><span class="nav-number">2.1.</span> <span class="nav-text">小白写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优雅写法-1"><span class="nav-number">2.2.</span> <span class="nav-text">优雅写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#繁杂的if-else"><span class="nav-number">2.3.</span> <span class="nav-text">繁杂的if else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改完后"><span class="nav-number">2.4.</span> <span class="nav-text">修改完后</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-骚操作"><span class="nav-number">3.</span> <span class="nav-text">三.骚操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-生成随机ID"><span class="nav-number">3.1.</span> <span class="nav-text">1. 生成随机ID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-每秒更新当前时间"><span class="nav-number">3.2.</span> <span class="nav-text">2. 每秒更新当前时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-生成随机-16-进制-颜色-码-如-ffffff"><span class="nav-number">3.3.</span> <span class="nav-text">3. 生成随机 16 进制 颜色 码 如 # ffffff</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-返回键盘"><span class="nav-number">3.4.</span> <span class="nav-text">4. 返回键盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-优雅的取整"><span class="nav-number">3.5.</span> <span class="nav-text">5. 优雅的取整</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-优雅的金钱格式化"><span class="nav-number">3.6.</span> <span class="nav-text">6.优雅的金钱格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-五种方法实现值交换"><span class="nav-number">3.7.</span> <span class="nav-text">7. 五种方法实现值交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-实现深拷贝"><span class="nav-number">3.8.</span> <span class="nav-text">8. 实现深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-去掉小数部分"><span class="nav-number">3.9.</span> <span class="nav-text">9. 去掉小数部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-递归求阶乘"><span class="nav-number">3.10.</span> <span class="nav-text">10. 递归求阶乘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-打印试试"><span class="nav-number">3.11.</span> <span class="nav-text">11. 打印试试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-console美化"><span class="nav-number">3.12.</span> <span class="nav-text">12. console美化</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number"></span> <span class="nav-text">结语</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yeqs</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '00753205cc8ca458afd9',
+          clientSecret: '9393742627170e48de78a1a73f81e60f52e7a4c3',
+          repo: 'hexo-gitalk',
+          owner: 'git-Where',
+          admin: ['git-Where'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
