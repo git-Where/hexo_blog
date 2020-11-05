@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="葉先生个人博客">
 <meta property="og:description" content="当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-06T09:18:00.488Z">
+<meta property="og:updated_time" content="2020-08-06T12:22:03.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 优雅写法">
 <meta name="twitter:description" content="当你写着耦合度非常高，代码量很多的时候，过段时间在去翻出来看，肯定会不相信这是当初自己写的代码。所以这时候就萌生了写出优雅的代码是多么的重要，不仅能提高自己的阅读速度，还能更加美观，重要的是，有逼格。">
@@ -376,7 +376,7 @@
 <hr>
 <a id="more"></a>
 <h3 id="一-判断为空"><a href="#一-判断为空" class="headerlink" title="一.判断为空"></a>一.判断为空</h3><h4 id="直白写法"><a href="#直白写法" class="headerlink" title="直白写法"></a>直白写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == <span class="literal">undefined</span>) a = [];</span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span>(params.success)&#123;</span><br><span class="line">    params.success(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="优雅写法"><a href="#优雅写法" class="headerlink" title="优雅写法"></a>优雅写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = a || [];</span><br><span class="line">    </span><br><span class="line">params.success&amp;&amp;params.success(res);</span><br><span class="line"><span class="comment">//注意事项</span></span><br><span class="line"><span class="number">1</span>、<span class="keyword">if</span>内不能出现<span class="keyword">var</span>、=等赋值定义语句，才可以使用优雅写法</span><br><span class="line"><span class="number">2</span>、<span class="keyword">if</span>内可以有多个方法调用，但必须方法内有<span class="literal">true</span>返回值（此用法意义不大）</span><br></pre></td></tr></table></figure>
+<h4 id="优雅写法"><a href="#优雅写法" class="headerlink" title="优雅写法"></a>优雅写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = a || [];</span><br><span class="line"></span><br><span class="line">params.success&amp;&amp;params.success(res);</span><br><span class="line"><span class="comment">//注意事项</span></span><br><span class="line"><span class="number">1</span>、<span class="keyword">if</span>内不能出现<span class="keyword">var</span>、=等赋值定义语句，才可以使用优雅写法</span><br><span class="line"><span class="number">2</span>、<span class="keyword">if</span>内可以有多个方法调用，但必须方法内有<span class="literal">true</span>返回值（此用法意义不大）</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>问题：我们编写js代码时经常遇到复杂逻辑判断的情况，通常大家可以用if/else或者switch来实现多个条件判断，但这样会有个问题，随着逻辑复杂度的增加，代码中的if/else/switch会变得越来越臃肿，越来越看不懂.</p>
 </blockquote>
@@ -520,7 +520,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -531,7 +531,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -542,7 +542,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

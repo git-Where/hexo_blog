@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use--motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog-logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue3.0,API使用,周期函数,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我们终于迎来了尤大大vue3.0的发布，但是周边一些ui框架(AntDesign等)还得等他们完善，竟然如此，我们先来用vite搭建一下vue3.0项目，好好玩一玩vue3.0新API的使用方法，为后面vue2.0改版升级vue3.0做填坑准备吧。vue3.0中文api地址">
+<meta name="keywords" content="vue3.0,API使用,周期函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3.0+vite vue3.0各API使用方法">
+<meta property="og:url" content="https://git-where.github.io/2020/10/31/vue3-0-vite-vue3-0各API使用方法/index.html">
+<meta property="og:site_name" content="葉先生个人博客">
+<meta property="og:description" content="我们终于迎来了尤大大vue3.0的发布，但是周边一些ui框架(AntDesign等)还得等他们完善，竟然如此，我们先来用vite搭建一下vue3.0项目，好好玩一玩vue3.0新API的使用方法，为后面vue2.0改版升级vue3.0做填坑准备吧。vue3.0中文api地址">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://hexo-img-url.oss-cn-beijing.aliyuncs.com/hexo_img/11.jpg">
+<meta property="og:updated_time" content="2020-11-04T13:09:23.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue3.0+vite vue3.0各API使用方法">
+<meta name="twitter:description" content="我们终于迎来了尤大大vue3.0的发布，但是周边一些ui框架(AntDesign等)还得等他们完善，竟然如此，我们先来用vite搭建一下vue3.0项目，好好玩一玩vue3.0新API的使用方法，为后面vue2.0改版升级vue3.0做填坑准备吧。vue3.0中文api地址">
+<meta name="twitter:image" content="https://hexo-img-url.oss-cn-beijing.aliyuncs.com/hexo_img/11.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://git-where.github.io/2020/10/31/vue3-0-vite-vue3-0各API使用方法/">
+
+
+
+
+
+  <title>vue3.0+vite vue3.0各API使用方法 | 葉先生个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/js/src/clickDynamic/clicklove.js"></script>
+  
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <main id="main" class="main">
+        <div class="headband">
+          <div class="headband-inner">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="340" height="86" src="//music.163.com/outchain/player?type=2&id=26090155&auto=1&height=66"></iframe>
+          </div>
+        </div>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">葉先生个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> 
+            
+            <span>首页</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> 
+            
+            <span>标签</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> 
+            
+            <span>分类</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> 
+            
+            <span>归档</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> 
+            
+            <span>关于</span>
+            <i class="menu-icon"></i>
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+          </header>
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://git-where.github.io/2020/10/31/vue3-0-vite-vue3-0各API使用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yeqs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="葉先生个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue3.0+vite vue3.0各API使用方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-31T18:28:30+08:00">
+                2020-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue3-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue3.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们终于迎来了尤大大vue3.0的发布，但是周边一些ui框架(<a href="https://ant.design/docs/react/introduce-cn" target="_blank" rel="noopener">AntDesign</a>等)还得等他们完善，竟然如此，我们先来用vite搭建一下<a href="https://www.vue3js.cn/docs/zh/" target="_blank" rel="noopener">vue3.0</a>项目，好好玩一玩vue3.0新API的使用方法，为后面vue2.0改版升级vue3.0做填坑准备吧。<a href="https://www.vue3js.cn/docs/zh/" target="_blank" rel="noopener">vue3.0中文api地址</a></p>
+<hr>
+<a id="more"></a>
+<h3 id="vue3-0-vite搭建"><a href="#vue3-0-vite搭建" class="headerlink" title="vue3.0+vite搭建"></a>vue3.0+vite搭建</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite-app &lt;project-name&gt;  // 创建项目</span><br><span class="line"><span class="built_in">cd</span> &lt;project-name&gt;   // 进入项目目录下</span><br><span class="line">yarn  // 安装依赖</span><br><span class="line">yarn dev   // 编译项目跑起来</span><br><span class="line">---</span><br><span class="line">集成typescript（vue-router@next axios）</span><br><span class="line">yarn add --dev typescript</span><br><span class="line">---</span><br><span class="line">集成sass</span><br><span class="line">yarn add sass</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>安装sass时，要是遇到控制台报错，解决办法：</p></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打开package.json</span><br><span class="line">把dependencies里的sass这一行，移到devDependencies</span><br><span class="line">重新运行yarn install</span><br></pre></td></tr></table></figure>
+<h3 id="vite是什么？"><a href="#vite是什么？" class="headerlink" title="vite是什么？"></a>vite是什么？</h3><div class="note info"><p>vite是面向现代浏览器，基于原生模块系统ESModule实现了按需编译的Web开发构建工具，在生产环境下基于Rollup打包。但目前vite并不太成熟，在编译打包阶段可能会造成文件丢失，可以先用比较成熟的webpack进行编译打包。</p></div>
+<p>优点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">快速冷启动服务器</span><br><span class="line">即时热模块更换（HMR）</span><br><span class="line">真正的按需编译</span><br></pre></td></tr></table></figure></p>
+<p>缺点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不太稳定就是缺点之一，需要自己安装vue-router,vuex(记得都要安装4.0版本，安装的时候还容易出错，大家还是自己上手试一下，好用肯定是好用的，不然尤大大也不会去开发这个工具啦)<span class="string">'vue-router'</span>：<span class="string">'^4.0.0-alpha.6'</span>,<span class="string">'vuex'</span>:<span class="string">'^4.0.0-alpha.1'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="变化一-main-js"><a href="#变化一-main-js" class="headerlink" title="变化一 main.js"></a>变化一 main.js</h3><p>main.js文件里的变了  多了createApp方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp &#125; from <span class="string">'vue'</span>;</span><br><span class="line">import App from <span class="string">'./App.vue'</span>;</span><br><span class="line">import router from <span class="string">'./router'</span>;</span><br><span class="line">import store from <span class="string">'./store'</span>;</span><br><span class="line">import <span class="string">'./App.scss'</span></span><br><span class="line"></span><br><span class="line">const app = createApp(App)</span><br><span class="line">app.use(router).use(store).mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>由于这里用了<code>import {createApp} from &#39;vue&#39;</code>;而不是<code>import Vue from &#39;vue&#39;</code>，所以使用一些ui框架以及第三方的包都会报以下的错误：<br><img src="https://hexo-img-url.oss-cn-beijing.aliyuncs.com/hexo_img/11.jpg" alt="报错"><br>遇到这个报错问题，基本上就说明你用的这个插件不支持vue3.0了。</p>
+<h3 id="变化二Vue-router-Vuex"><a href="#变化二Vue-router-Vuex" class="headerlink" title="变化二Vue-router,Vuex"></a>变化二Vue-router,Vuex</h3><p>在vue3.0中的路由使用，模板中还是可以使用router-link，但是在组件中setup函数中使用有所不同：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">//首先的从vue-router中导入useRouter</span><br><span class="line">import &#123; useRouter &#125; from <span class="string">"vue-router"</span>;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    //实例化路由</span><br><span class="line">    const router = useRouter();</span><br><span class="line">    router.push(<span class="string">"/"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在vue3.0中vuex的使用同vue-router类似：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive,toRefs &#125; from <span class="string">'vue'</span>;</span><br><span class="line">import &#123; useStore &#125; from <span class="string">'vuex'</span>;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    const state = reactive(&#123;</span><br><span class="line">      name:<span class="string">''</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    const store = useStore()</span><br><span class="line"></span><br><span class="line">    state.name = store.state.Name</span><br><span class="line">     <span class="built_in">return</span> &#123;</span><br><span class="line">       ...toRefs(state)</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="变化三-在vue2-0里，template模板里只能有一个根标签，在vue3-0中允许可以使用多个标签"><a href="#变化三-在vue2-0里，template模板里只能有一个根标签，在vue3-0中允许可以使用多个标签" class="headerlink" title="变化三 在vue2.0里，template模板里只能有一个根标签，在vue3.0中允许可以使用多个标签"></a>变化三 在vue2.0里，template模板里只能有一个根标签，在vue3.0中允许可以使用多个标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="变化四-Composition-Api"><a href="#变化四-Composition-Api" class="headerlink" title="变化四 Composition Api"></a>变化四 Composition Api</h3><p>在vue2.0中我们都把.vue文件里的js部分叫做Function API，而在vue3.0里变为Composition API，这里变化最大的地方：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"count++"</span>&gt;count is: &#123;&#123; count &#125;&#125; &lt;/button&gt;</span><br><span class="line">    &lt;p&gt;Editc &lt;code&gt;components/HelloWorld.vue&lt;/code&gt; to <span class="built_in">test</span> hot module replacement.&lt;/p&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"change"</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      toRefs获取对象的值：&#123;&#123;supNum+<span class="string">',,,'</span>+arrt&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      计算属性的值（computed）：&#123;&#123;num&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref,reactive,toRefs,computed, watchEffect, watch, onBeforeMount &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'HelloWorld'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;,</span><br><span class="line">  setup(props) &#123;</span><br><span class="line">    <span class="built_in">let</span> count = ref(10) //响应式单个值</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> state = reactive(&#123; //响应式对象数据</span><br><span class="line">      supNum:100,</span><br><span class="line">      arrt:[1,2,3]</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">change</span></span>()&#123;  //方法</span><br><span class="line">      state.supNum++</span><br><span class="line">      state.arrt.push(4)</span><br><span class="line">      x.value++</span><br><span class="line">      y.value++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onMounted(async () =&gt; &#123; //dom元素渲染完成</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> num = computed(() =&gt; &#123; // 计算属性</span><br><span class="line">      <span class="built_in">return</span> state.supNum+<span class="string">'0000'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    watchEffect(() =&gt; &#123; // 监听依赖变化-第一次的值会监听，以后每次改变也都会执行</span><br><span class="line">      console.log(state.supNum+<span class="string">',watchEffect'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    watch(</span><br><span class="line">      () =&gt; state.supNum, // 可以监听到state对象中的某个值，（另外一种写法：state监听对象中的所有属性值）</span><br><span class="line">      () =&gt; &#123; // 跟vue2.0的watch一模一样，属于懒执行，第一次数值不会监听，以后每次变化都执行</span><br><span class="line">        console.log(state.supNum+<span class="string">',watch'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> x = ref(0);</span><br><span class="line">    <span class="built_in">let</span> y = ref(0);</span><br><span class="line">    watch([x,y],([x,y],[prevX,prevY]) =&gt; &#123; // 能够监听多个值中某个值的改变，prevX旧值</span><br><span class="line">      console.log(x,prevX)</span><br><span class="line">      console.log(x,prevY)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 在第一次渲染组件之前，从服务器获取数据</span><br><span class="line">    onBeforeMount(() =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      ...toRefs(state), //把state对象里的每一项转变成ref格式，即模板中直接使用supNum获取值</span><br><span class="line">      count,</span><br><span class="line">      // state, // 模板中要state.supNum获取数据</span><br><span class="line">      change,</span><br><span class="line">      num</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="看到这里是不是觉得vue3-0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3-0新特性来了。"><a href="#看到这里是不是觉得vue3-0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3-0新特性来了。" class="headerlink" title="看到这里是不是觉得vue3.0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3.0新特性来了。"></a>看到这里是不是觉得vue3.0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3.0新特性来了。</h4><h3 id="Composition-API是什么"><a href="#Composition-API是什么" class="headerlink" title="Composition API是什么"></a>Composition API是什么</h3><h4 id="setup函数"><a href="#setup函数" class="headerlink" title="setup函数"></a>setup函数</h4><h5 id="setup函数是一个新的vue特性，是Composition-Api入口"><a href="#setup函数是一个新的vue特性，是Composition-Api入口" class="headerlink" title="setup函数是一个新的vue特性，是Composition Api入口"></a>setup函数是一个新的vue特性，是Composition Api入口</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; setup &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">   setup(props, context) &#123;</span><br><span class="line">       //这里的props大家应该知道是啥吧，父组件传的值</span><br><span class="line">       // context是什么？</span><br><span class="line">       //在setup()里我们不能用this</span><br><span class="line">       //所以vue2.0里的 this.<span class="variable">$emit</span>, this.<span class="variable">$psrent</span>, this.<span class="variable">$refs</span>在这里都不能用了。</span><br><span class="line">       //context就是对这些参数的集合</span><br><span class="line">       //context.attrs</span><br><span class="line">       //context.slots</span><br><span class="line">       //context.parent 相当于2.0里 this.<span class="variable">$psrent</span></span><br><span class="line">       //context.root 相当于2.0里 this</span><br><span class="line">       //context.emit 相当于2.0里 this.<span class="variable">$emit</span></span><br><span class="line">       //context.refs 相当于2.0里 this.<span class="variable">$refs</span></span><br><span class="line">       ...</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="ref-声明单一基础数据类型时使用"><a href="#ref-声明单一基础数据类型时使用" class="headerlink" title="ref() 声明单一基础数据类型时使用"></a>ref() 声明单一基础数据类型时使用</h4><h5 id="注意：-定义的变量，函数都要-return-出来"><a href="#注意：-定义的变量，函数都要-return-出来" class="headerlink" title="注意： 定义的变量，函数都要 return 出来"></a>注意： 定义的变量，函数都要 return 出来</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> &lt;template&gt;</span><br><span class="line">  &lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> import &#123; setup， ref &#125; from <span class="string">'vue'</span></span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">    setup(props, context) &#123;</span><br><span class="line">      <span class="built_in">let</span> count = ref(0)</span><br><span class="line">      console.log(count.value) //0 ，  内部获取时需要用.value来获取</span><br><span class="line">      console.log(isRef(count)) //<span class="literal">true</span>   //isRef() 用来判断是不是ref对象</span><br><span class="line">      <span class="built_in">return</span> &#123;</span><br><span class="line">        count  // ref返回的是一个响应式的对象</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Reactive-声明单一对象时使用"><a href="#Reactive-声明单一对象时使用" class="headerlink" title="Reactive() 声明单一对象时使用"></a>Reactive() 声明单一对象时使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div&gt;&#123;&#123;data1&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; setup, Reactive &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">   setup(props, context) &#123;</span><br><span class="line">      const obj = reactive(&#123;</span><br><span class="line">        data1: <span class="string">'123'</span>,</span><br><span class="line">        data2: &#123;&#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    </span><br><span class="line">      <span class="built_in">return</span> &#123;</span><br><span class="line">        ...toRefs(obj)// 把obj转为响应式的ref，不然template里获取不到,在template里可以直接data1获取值</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="watchEffect-监听props"><a href="#watchEffect-监听props" class="headerlink" title="watchEffect() 监听props"></a>watchEffect() 监听props</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 父组件.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">   &lt;Comp val:<span class="string">'1'</span>/&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">import Comp from <span class="string">'./Comp.vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  components： &#123;</span><br><span class="line">      Comp</span><br><span class="line">  &#125;, //components方法也是和2.0相同</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">      </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">-------------------------------------- </span><br><span class="line">//子组件Comp.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div&gt;&#123;&#123;obj.data1&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; Reactive &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  props: [<span class="string">'val'</span>], //这里获取props和 2.0 一样,也可以用对象形式</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">     watchEffect(() =&gt; &#123;  //首次和props改变才会执行这里面的代码</span><br><span class="line">         console.log(props.val) //获取props里的值</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="watch-监听器"><a href="#watch-监听器" class="headerlink" title="watch() 监听器"></a>watch() 监听器</h4><h5 id="监听单个数据"><a href="#监听单个数据" class="headerlink" title="监听单个数据"></a>监听单个数据</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; Reactive &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">   <span class="built_in">let</span> count1 = ref(0)</span><br><span class="line">   <span class="built_in">let</span> state = reactive(&#123;</span><br><span class="line">      count2: 0</span><br><span class="line">   )</span><br><span class="line">    //监听reactive类型</span><br><span class="line">   watch(</span><br><span class="line">    () =&gt; state.count2， //这里是你要监听的数据</span><br><span class="line">    (count， preCount) =&gt; &#123; //count新值， preCount旧值</span><br><span class="line">        console.log(<span class="string">''</span>) //这里是监听数据变化后执行的函数</span><br><span class="line">   &#125;, &#123;lazy： <span class="literal">false</span>&#125;//在第一次创建不监听)</span><br><span class="line">   </span><br><span class="line">    //监听ref类型</span><br><span class="line">    watch(count1，(count， preCount) =&gt; &#123; //count新值， preCount旧值</span><br><span class="line">      console.log(<span class="string">''</span>) //这里是监听数据变化后执行的函数</span><br><span class="line">    &#125;)</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">return</span> &#123;</span><br><span class="line">      count</span><br><span class="line">      ...toRefs(state)</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="监听多个数据"><a href="#监听多个数据" class="headerlink" title="监听多个数据"></a>监听多个数据</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; setup, Reactive &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="built_in">let</span> count1 = ref(0)</span><br><span class="line">    <span class="built_in">let</span> name1 = ref(0)</span><br><span class="line">    <span class="built_in">let</span> state = reactive(&#123;</span><br><span class="line">      count2: 0，</span><br><span class="line">      name2： <span class="string">'yangy'</span></span><br><span class="line">    )</span><br><span class="line">    //监听多个reactive类型</span><br><span class="line">    watch(</span><br><span class="line">       [() =&gt; state.count2, () =&gt; state.name2]</span><br><span class="line">       ([count， name], [preCount， preName]) =&gt; &#123; //count新值， preCount旧值</span><br><span class="line">           console.log(<span class="string">''</span>) //这里是监听数据变化后执行的函数</span><br><span class="line">       &#125;, </span><br><span class="line">       &#123;</span><br><span class="line">          lazy： <span class="literal">false</span></span><br><span class="line">    &#125;)//在第一次创建不监听</span><br><span class="line">   </span><br><span class="line">    //监听ref类型</span><br><span class="line">    watch(</span><br><span class="line">       [count2, name2]</span><br><span class="line">       ([count， name], [preCount， preName]) =&gt; &#123; //count新值， preCount旧值</span><br><span class="line">           console.log(<span class="string">''</span>) //这里是监听数据变化后执行的函数</span><br><span class="line">    &#125;, &#123;lazy： <span class="literal">false</span>&#125;//在第一次创建不监听)</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">return</span> &#123;</span><br><span class="line">      count，</span><br><span class="line">      ...toRefs(state)</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="computed-计算属性-可创建只读，和可读可写两种"><a href="#computed-计算属性-可创建只读，和可读可写两种" class="headerlink" title="computed() 计算属性 可创建只读，和可读可写两种"></a>computed() 计算属性 可创建只读，和可读可写两种</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;addCount&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;addCount2&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; setup, Ref &#125; from <span class="string">'vue'</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">   </span><br><span class="line">    const count = ref(0)</span><br><span class="line">    const addCount = computed(() =&gt; count.value + 1) //只读 ，count.value变化后执行加1</span><br><span class="line">    </span><br><span class="line">    const addCount2 = computed(&#123;</span><br><span class="line">        get:() =&gt; count.value + 1,</span><br><span class="line">        <span class="built_in">set</span>: (value) =&gt; count.value = value </span><br><span class="line">    &#125;)    </span><br><span class="line">    // addCount2.value = 10   //赋值方法</span><br><span class="line">      </span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      count,</span><br><span class="line">      addCount,</span><br><span class="line">      addCount2</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这是用Vue3.demo, 新的语法基本上都涉及了, 以后还会去优化.虽然只是个dome,也希望你给我点个星星鼓励一下.</p>
+<div class="note info"><p>今天就先说到这里吧，后面在花点时间去写写关于生命周期函数的使用方法，以及其他vue3.0新增的Api属性，以上都是自己的一些理解，如有不对之处还请指出，也可在下方留言，一起讨论。</p></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue3-0/" rel="tag"># vue3.0</a>
+          
+            <a href="/tags/API使用/" rel="tag"># API使用</a>
+          
+            <a href="/tags/周期函数/" rel="tag"># 周期函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/07/vue-cli3-0多环境配置/" rel="next" title="vue-cli3.0多环境配置">
+                <i class="fa fa-chevron-left"></i> vue-cli3.0多环境配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yeqs</p>
+              <p class="site-description motion-element" itemprop="description">--知识给人重量，成就给人光彩，大多数人只是看到了光彩，而不去称量重量--</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue3-0-vite搭建"><span class="nav-number">1.</span> <span class="nav-text">vue3.0+vite搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vite是什么？"><span class="nav-number">2.</span> <span class="nav-text">vite是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变化一-main-js"><span class="nav-number">3.</span> <span class="nav-text">变化一 main.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变化二Vue-router-Vuex"><span class="nav-number">4.</span> <span class="nav-text">变化二Vue-router,Vuex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变化三-在vue2-0里，template模板里只能有一个根标签，在vue3-0中允许可以使用多个标签"><span class="nav-number">5.</span> <span class="nav-text">变化三 在vue2.0里，template模板里只能有一个根标签，在vue3.0中允许可以使用多个标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变化四-Composition-Api"><span class="nav-number">6.</span> <span class="nav-text">变化四 Composition Api</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#看到这里是不是觉得vue3-0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3-0新特性来了。"><span class="nav-number">6.1.</span> <span class="nav-text">看到这里是不是觉得vue3.0的写法越来越趋近与react的写法了，没错，这只是他的改变之一，重点，vue3.0新特性来了。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Composition-API是什么"><span class="nav-number">7.</span> <span class="nav-text">Composition API是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setup函数"><span class="nav-number">7.1.</span> <span class="nav-text">setup函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#setup函数是一个新的vue特性，是Composition-Api入口"><span class="nav-number">7.1.1.</span> <span class="nav-text">setup函数是一个新的vue特性，是Composition Api入口</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-声明单一基础数据类型时使用"><span class="nav-number">7.2.</span> <span class="nav-text">ref() 声明单一基础数据类型时使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意：-定义的变量，函数都要-return-出来"><span class="nav-number">7.2.1.</span> <span class="nav-text">注意： 定义的变量，函数都要 return 出来</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reactive-声明单一对象时使用"><span class="nav-number">7.3.</span> <span class="nav-text">Reactive() 声明单一对象时使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#watchEffect-监听props"><span class="nav-number">7.4.</span> <span class="nav-text">watchEffect() 监听props</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#watch-监听器"><span class="nav-number">7.5.</span> <span class="nav-text">watch() 监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#监听单个数据"><span class="nav-number">7.5.1.</span> <span class="nav-text">监听单个数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监听多个数据"><span class="nav-number">7.5.2.</span> <span class="nav-text">监听多个数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#computed-计算属性-可创建只读，和可读可写两种"><span class="nav-number">7.6.</span> <span class="nav-text">computed() 计算属性 可创建只读，和可读可写两种</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yeqs</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '00753205cc8ca458afd9',
+          clientSecret: '9393742627170e48de78a1a73f81e60f52e7a4c3',
+          repo: 'hexo-gitalk',
+          owner: 'git-Where',
+          admin: ['git-Where'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
